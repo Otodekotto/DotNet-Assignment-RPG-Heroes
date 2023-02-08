@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DotNet_Assignment_RPG_Heroes.Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         public string Name { get => name; set => name = value; }
 
         public int Level { get; set; } = 1;
-        public abstract int[] LevelAttribute { get; set; }
+        public abstract HeroAttribute LevelAttribute { get; set; }
         public abstract string[]? Equipment { get; set; }
         public abstract WeaponType[]? ValidWeaponTypes { get;}
         public abstract ArmorType[]? ValidArmorTypes { get;}
@@ -37,9 +38,9 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         {
             Console.WriteLine(Name);
             Console.WriteLine(Level);
-            Console.WriteLine("Strength: "+ LevelAttribute[0]);
-            Console.WriteLine("Dexterity: " + LevelAttribute[1]);
-            Console.WriteLine("Intelligence: " + LevelAttribute[2]);
+            Console.WriteLine("Strength: "+ LevelAttribute.Strength );
+            Console.WriteLine("Dexterity: " + LevelAttribute.Dexterity );
+            Console.WriteLine("Intelligence: " + LevelAttribute.Intelligence );
             Console.WriteLine(Equipment);
         }
     }

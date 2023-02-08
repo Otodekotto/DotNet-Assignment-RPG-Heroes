@@ -8,6 +8,7 @@ namespace DotNet_Assignment_RPG_Heroes
         {
             var hero = new Warrior("Jonny");
             hero.LevelUp();
+            hero.LevelUp();
             hero.Display();
             
         }
