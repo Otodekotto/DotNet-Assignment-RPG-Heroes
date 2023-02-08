@@ -1,6 +1,7 @@
 using DotNet_Assignment_RPG_Heroes.Helper;
 using DotNet_Assignment_RPG_Heroes.Heroes;
 using Moq;
+using System;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace DotNet_Assignment_RPG_Heroes_Test
@@ -14,7 +15,6 @@ namespace DotNet_Assignment_RPG_Heroes_Test
         {
             string name = "Warrior";
             var hero = new Warrior(name);
-            //todo: Check Level and Attributes
 
             string expected = name;
             string actual = hero.Name;
@@ -25,7 +25,6 @@ namespace DotNet_Assignment_RPG_Heroes_Test
         {
             string name = "Warrior";
             var hero = new Warrior(name);
-            //todo: Check Level and Attributes
 
             int expected = 1;
             int actual = hero.Level;
@@ -47,7 +46,6 @@ namespace DotNet_Assignment_RPG_Heroes_Test
         {
             string name = "Mage";
             var hero = new Mage(name);
-            //todo: Check Level and Attributes
 
             string expected = name;
             string actual = hero.Name;
@@ -58,7 +56,6 @@ namespace DotNet_Assignment_RPG_Heroes_Test
         {
             string name = "Mage";
             var hero = new Mage(name);
-            //todo: Check Level and Attributes
 
             int expected = 1;
             int actual = hero.Level;
@@ -71,6 +68,37 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             var hero = new Mage(name);
 
             HeroAttribute expected = new HeroAttribute { Strength = 1, Dexterity = 1, Intelligence = 8 };
+            HeroAttribute actual = hero.LevelAttribute;
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Constructor_InitializeRangerHero_ShouldCreateRangerWithName()
+        {
+            string name = "Ranger";
+            var hero = new Ranger(name);
+
+            string expected = name;
+            string actual = hero.Name;
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Constructor_InitializeRangerHero_ShouldCreateRangerWithLevel()
+        {
+            string name = "Ranger";
+            var hero = new Ranger(name);
+
+            int expected = 1;
+            int actual = hero.Level;
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Constructor_InitializeRangerHero_ShouldCreateRangerWithAttributes()
+        {
+            string name = "Ranger";
+            var hero = new Ranger(name);
+
+            HeroAttribute expected = new HeroAttribute { Strength = 1, Dexterity = 7, Intelligence = 1 };
             HeroAttribute actual = hero.LevelAttribute;
             Assert.Equal(expected, actual);
         }
@@ -123,6 +151,28 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void Constructor_RangerLevelUp_ShouldLevelUpAndGetALevel()
+        {
+            string name = "Ranger";
+            var hero = new Ranger(name);
+            //todo: Check Level and Attributes
+            hero.LevelUp();
+            var expected = 2;
+            var actual = hero.Level;
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Constructor_RangerLevelUp_ShouldLevelUpAndGetCorrectAttribute()
+        {
+            string name = "Ranger";
+            var hero = new Ranger(name);
+            //todo: Check Level and Attributes
+            hero.LevelUp();
+            HeroAttribute expected = new HeroAttribute { Strength = 2, Dexterity = 12, Intelligence = 2 };
+            HeroAttribute actual = hero.LevelAttribute;
+            Assert.Equal(expected, actual);
+        }
         #endregion
     }
 }   
