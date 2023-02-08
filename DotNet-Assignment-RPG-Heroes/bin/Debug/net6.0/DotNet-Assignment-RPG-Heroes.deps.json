@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "DotNet-Assignment-RPG-Heroes/1.0.0": {
+        "runtime": {
+          "DotNet-Assignment-RPG-Heroes.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DotNet-Assignment-RPG-Heroes/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

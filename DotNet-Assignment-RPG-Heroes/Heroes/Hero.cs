@@ -20,8 +20,8 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         public int Level { get; set; } = 1;
         public abstract HeroAttribute LevelAttribute { get; set; }
         public abstract string[]? Equipment { get; set; }
-        public abstract WeaponType[]? ValidWeaponTypes { get;}
-        public abstract ArmorType[]? ValidArmorTypes { get;}
+        public abstract List<WeaponType> ValidWeaponTypes { get;}
+        public abstract List<ArmorType> ValidArmorTypes { get;}
 
         public Hero(string name)
         {

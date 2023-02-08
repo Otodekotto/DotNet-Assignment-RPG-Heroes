@@ -102,6 +102,37 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             HeroAttribute actual = hero.LevelAttribute;
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void Constructor_InitializeRogueHero_ShouldCreateRogueWithName()
+        {
+            string name = "Rogue";
+            var hero = new Rogue(name);
+
+            string expected = name;
+            string actual = hero.Name;
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Constructor_InitializeRogueHero_ShouldCreateRogueWithLevel()
+        {
+            string name = "Rogue";
+            var hero = new Rogue(name);
+
+            int expected = 1;
+            int actual = hero.Level;
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Constructor_InitializeRogueHero_ShouldCreateRogueWithAttributes()
+        {
+            string name = "Rogue";
+            var hero = new Rogue(name);
+
+            HeroAttribute expected = new HeroAttribute { Strength = 2, Dexterity = 6, Intelligence = 1 };
+            HeroAttribute actual = hero.LevelAttribute;
+            Assert.Equal(expected, actual);
+        }
         #endregion
 
         #region HeroLevelUp
@@ -110,7 +141,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
         {
             string name = "Warrior";
             var hero = new Warrior(name);
-            //todo: Check Level and Attributes
+
             hero.LevelUp();
             var expected = 2;
             var actual = hero.Level;
@@ -121,7 +152,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
         {
             string name = "Warrior";
             var hero = new Warrior(name);
-            //todo: Check Level and Attributes
+
             hero.LevelUp();
             HeroAttribute expected = new HeroAttribute { Strength = 8, Dexterity = 4, Intelligence = 2 };
             HeroAttribute actual = hero.LevelAttribute;
@@ -133,7 +164,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
         {
             string name = "Mage";
             var hero = new Mage(name);
-            //todo: Check Level and Attributes
+
             hero.LevelUp();
             var expected = 2;
             var actual = hero.Level;
@@ -144,7 +175,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
         {
             string name = "Mage";
             var hero = new Mage(name);
-            //todo: Check Level and Attributes
+
             hero.LevelUp();
             HeroAttribute expected = new HeroAttribute { Strength = 2, Dexterity = 2, Intelligence = 13 };
             HeroAttribute actual = hero.LevelAttribute;
@@ -156,7 +187,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
         {
             string name = "Ranger";
             var hero = new Ranger(name);
-            //todo: Check Level and Attributes
+ 
             hero.LevelUp();
             var expected = 2;
             var actual = hero.Level;
@@ -167,9 +198,30 @@ namespace DotNet_Assignment_RPG_Heroes_Test
         {
             string name = "Ranger";
             var hero = new Ranger(name);
-            //todo: Check Level and Attributes
+
             hero.LevelUp();
             HeroAttribute expected = new HeroAttribute { Strength = 2, Dexterity = 12, Intelligence = 2 };
+            HeroAttribute actual = hero.LevelAttribute;
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Constructor_RogueLevelUp_ShouldLevelUpAndGetALevel()
+        {
+            string name = "Rogue";
+            var hero = new Rogue(name);
+            hero.LevelUp();
+            var expected = 2;
+            var actual = hero.Level;
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Constructor_RogueLevelUp_ShouldLevelUpAndGetCorrectAttribute()
+        {
+            string name = "Rogue";
+            var hero = new Rogue(name);
+            hero.LevelUp();
+            HeroAttribute expected = new HeroAttribute { Strength = 3, Dexterity = 10, Intelligence = 2 };
             HeroAttribute actual = hero.LevelAttribute;
             Assert.Equal(expected, actual);
         }
