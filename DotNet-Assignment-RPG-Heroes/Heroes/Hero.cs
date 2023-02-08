@@ -1,4 +1,5 @@
 ﻿using DotNet_Assignment_RPG_Heroes.Enums;
+using DotNet_Assignment_RPG_Heroes.Equipments;
 using DotNet_Assignment_RPG_Heroes.Helper;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,13 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
 
         public int Level { get; set; } = 1;
         public abstract HeroAttribute LevelAttribute { get; set; }
-        public abstract string[]? Equipment { get; set; }
+        public Dictionary<SlotType, Item?> Equipments = new Dictionary<SlotType, Item?>
+        {
+            [SlotType.Head] = null,
+            [SlotType.Body] = null,
+            [SlotType.Legs] = null,
+            [SlotType.Weapon]  = null
+        };
         public abstract List<WeaponType> ValidWeaponTypes { get;}
         public abstract List<ArmorType> ValidArmorTypes { get;}
 
@@ -28,10 +35,9 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             this.name = name;
         }
         public abstract void LevelUp();
-        public string[] Equip() 
+        public void Equip(Item item) 
         {
-            string[] equips= new string[0];
-            return equips; 
+            
         }
         public abstract void Damage();
         public void TotalAttributes()
@@ -45,7 +51,10 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             Console.WriteLine("Strength: "+ LevelAttribute.Strength );
             Console.WriteLine("Dexterity: " + LevelAttribute.Dexterity );
             Console.WriteLine("Intelligence: " + LevelAttribute.Intelligence );
-            Console.WriteLine(Equipment);
+            foreach(var item in Equipments)
+            {
+                Console.WriteLine($"{item}");
+            }
         }
     }
 }

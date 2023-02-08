@@ -1,4 +1,5 @@
 ﻿using DotNet_Assignment_RPG_Heroes.Enums;
+using DotNet_Assignment_RPG_Heroes.Equipments;
 using DotNet_Assignment_RPG_Heroes.Helper;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,6 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         }
 
         public override HeroAttribute LevelAttribute { get; set; } = new HeroAttribute { Strength = 1, Dexterity = 1, Intelligence = 8 };
-        public override string[]? Equipment { get; set; }
         public override List<WeaponType> ValidWeaponTypes { get; } = new List<WeaponType> { WeaponType.Staff, WeaponType.Wand};
         public override List<ArmorType> ValidArmorTypes { get; } = new List<ArmorType> { ArmorType.Cloth};
 
