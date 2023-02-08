@@ -10,7 +10,7 @@ namespace DotNet_Assignment_RPG_Heroes
             hero.LevelUp();
             hero.LevelUp();
             hero.Display();
-            
+            hero.TotalAttributes();
         }
     }
 }

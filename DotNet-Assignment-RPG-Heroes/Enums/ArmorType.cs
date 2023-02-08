@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DotNet_Assignment_RPG_Heroes.Heroes
+namespace DotNet_Assignment_RPG_Heroes.Enums
 {
     public enum ArmorType
     {

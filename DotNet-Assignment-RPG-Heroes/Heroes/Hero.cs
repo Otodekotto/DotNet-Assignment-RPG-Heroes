@@ -1,4 +1,5 @@
-﻿using DotNet_Assignment_RPG_Heroes.Helper;
+﻿using DotNet_Assignment_RPG_Heroes.Enums;
+using DotNet_Assignment_RPG_Heroes.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -33,7 +34,10 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             return equips; 
         }
         public abstract void Damage();
-        public abstract void TotalAttributes();
+        public void TotalAttributes()
+        {
+            Console.WriteLine("Total Attributes: " + (LevelAttribute.Strength + LevelAttribute.Dexterity + LevelAttribute.Intelligence));
+        }
         public void Display() 
         {
             Console.WriteLine(Name);

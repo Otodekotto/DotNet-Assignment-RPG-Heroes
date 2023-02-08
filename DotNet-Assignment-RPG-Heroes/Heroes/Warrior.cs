@@ -1,4 +1,5 @@
-﻿using DotNet_Assignment_RPG_Heroes.Helper;
+﻿using DotNet_Assignment_RPG_Heroes.Enums;
+using DotNet_Assignment_RPG_Heroes.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,11 +30,6 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             Level += 1;
             HeroAttribute heroLevelUpAttribute = new HeroAttribute { Strength = 3 , Dexterity = 2 , Intelligence= 1 };
             LevelAttribute += heroLevelUpAttribute; 
-        }
-
-        public override void TotalAttributes()
-        {
-            throw new NotImplementedException();
         }
     }
 }
