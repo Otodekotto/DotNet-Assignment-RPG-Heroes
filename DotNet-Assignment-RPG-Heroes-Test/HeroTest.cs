@@ -5,6 +5,7 @@ using DotNet_Assignment_RPG_Heroes.Enums;
 using Moq;
 using System;
 using static System.Net.Mime.MediaTypeNames;
+using DotNet_Assignment_RPG_Heroes.CustomExceptions;
 
 namespace DotNet_Assignment_RPG_Heroes_Test
 {
@@ -384,6 +385,22 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             var actual = armor.ArmorAttribute;
             Assert.Equal(expected, actual);
         }
+        #endregion
+
+        #region HeroEquipItem
+        [Fact]
+        public void Function_HeroEquippingWrongWeapon_ShouldGiveInvalidWeaponException()
+        {
+            var warrior = new Warrior("Jakob");
+            string name = "Axecalibur";
+            int requiredLevel = 4;
+            int weaponDamage = 999;
+            var weapon = new Weapon(name, requiredLevel, WeaponType.Axe, weaponDamage);
+
+            var expected = "You Do Not Have The Requirement To Equip This Weapon!";
+            var actual = Assert.Throws<InvalidWeaponException>(() => warrior.Equip(weapon)).Message;
+        }
+
         #endregion
     }
 }   

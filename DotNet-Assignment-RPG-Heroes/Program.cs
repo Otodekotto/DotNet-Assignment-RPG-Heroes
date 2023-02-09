@@ -14,15 +14,13 @@ namespace DotNet_Assignment_RPG_Heroes
             //Console.WriteLine(armor.ArmorType);
 
             string name = "Axecalibur";
-            int requiredLevel = 1;
+            int requiredLevel = 4;
             int weaponDamage = 999;
             var weapon = new Weapon(name, requiredLevel, WeaponType.Axe, weaponDamage);
 
             var hero = new Warrior("Moon");
-            hero.Damage();
             hero.Equip(weapon);
             //hero.Equip(armor);
-            hero.Damage();
             hero.Display();
         }
     }

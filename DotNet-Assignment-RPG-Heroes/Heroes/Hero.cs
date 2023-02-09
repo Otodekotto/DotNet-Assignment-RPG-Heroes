@@ -27,7 +27,7 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             //[SlotType.Head] = new Armor { Name = "Naked"},
             //[SlotType.Body] = new Armor { Name = "Naked" },
             //[SlotType.Legs] = new Armor { Name = "Naked" },
-            //[SlotType.Weapon] = new Weapon { Name = "Bare Hands" }
+            [SlotType.Weapon] = new Weapon("Bare Hands", 0, WeaponType.BareHands , 1)
         };
         public abstract List<WeaponType> ValidWeaponTypes { get; }
         public abstract List<ArmorType> ValidArmorTypes { get; }
@@ -39,36 +39,19 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         public abstract void LevelUp();
         public void Equip(Weapon weapon)
         {
-            try
-            {
-                if (ValidWeaponTypes.Contains(weapon.WeaponType) && Level >= weapon.RequiredLevel && weapon.Slot == SlotType.Weapon)
-                {
-                    Equipments[SlotType.Weapon] = weapon;
-                }
-                else
-                    throw new InvalidWeaponException();
-            }
-            catch (InvalidWeaponException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            if (ValidWeaponTypes.Contains(weapon.WeaponType) && Level >= weapon.RequiredLevel && weapon.Slot == SlotType.Weapon)
+                Equipments[SlotType.Weapon] = weapon;
+            else
+                throw new InvalidWeaponException();
         }
     
         public void Equip(Armor armor)
         {
-            try
-            {
-                if (ValidArmorTypes.Contains(armor.ArmorType) && Level >= armor.RequiredLevel && armor.Slot != SlotType.Weapon)
-                {
-                    Equipments[armor.Slot] = armor;
-                }
-                else
-                    throw new InvalidArmorException();
-            }
-            catch (InvalidArmorException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+
+            if (ValidArmorTypes.Contains(armor.ArmorType) && Level >= armor.RequiredLevel && armor.Slot != SlotType.Weapon)
+                Equipments[armor.Slot] = armor;
+            else
+                throw new InvalidArmorException();
         }
 
         public int Damage() 

@@ -14,6 +14,7 @@ namespace DotNet_Assignment_RPG_Heroes.Enums
         Hammer,
         Staff,
         Sword,
-        Wand
+        Wand,
+        BareHands
     }
 }
