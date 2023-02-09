@@ -18,16 +18,16 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
     public abstract class Hero
     {
         protected string name;
-        public string Name { get => name; set => name = value; }
-        public abstract string Class { get; set; }
+        public string Name { get => name; private set => name = value; }
+        public abstract string Class { get;}
         public int Level { get; set; } = 1;
-        public abstract HeroAttribute LevelAttribute { get; set; }
+        public abstract HeroAttribute LevelAttribute { get;  set; }
         public Dictionary<SlotType, Item?> Equipments = new Dictionary<SlotType, Item?>
         {
-            [SlotType.Head] = new Armor { Name = "Naked"},
-            [SlotType.Body] = new Armor { Name = "Naked" },
-            [SlotType.Legs] = new Armor { Name = "Naked" },
-            [SlotType.Weapon] = new Weapon { Name = "Bare Hands" }
+            //[SlotType.Head] = new Armor { Name = "Naked"},
+            //[SlotType.Body] = new Armor { Name = "Naked" },
+            //[SlotType.Legs] = new Armor { Name = "Naked" },
+            //[SlotType.Weapon] = new Weapon { Name = "Bare Hands" }
         };
         public abstract List<WeaponType> ValidWeaponTypes { get; }
         public abstract List<ArmorType> ValidArmorTypes { get; }
@@ -71,16 +71,16 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             }
         }
 
-        public void Damage() 
+        public int Damage() 
         {
             int damagingAttribute = GetDamagingAttribute();
             int heroDamage;
-            Equipments.TryGetValue(SlotType.Weapon, out Item item);
-            Weapon weapon = item as Weapon;
+            Equipments.TryGetValue(SlotType.Weapon, out Item? item);
+            Weapon? weapon = item as Weapon;
 
             heroDamage = weapon.WeaponDamage * (1 + damagingAttribute / 100);
 
-            Console.WriteLine("My DMGAGE : "+heroDamage);
+            return heroDamage;
         }
         private int GetDamagingAttribute()
         {
@@ -97,7 +97,7 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         }
         public HeroAttribute TotalAttributes()
         {
-            HeroAttribute totalAttributes = new HeroAttribute();
+            HeroAttribute totalAttributes = new HeroAttribute(0,0,0);
             foreach(var item in Equipments)
             { 
                 if(item.Value.Slot == SlotType.Head || item.Value.Slot == SlotType.Body || item.Value.Slot == SlotType.Legs)
@@ -117,16 +117,15 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         public void Display() 
         {
             HeroAttribute totalAttributes = TotalAttributes();
-            Console.WriteLine(Name);
-            Console.WriteLine(Level);
-            Console.WriteLine("Strength: "+ totalAttributes.Strength );
-            Console.WriteLine("Dexterity: " + totalAttributes.Dexterity );
-            Console.WriteLine("Intelligence: " + totalAttributes.Intelligence );
-            foreach(var item in Equipments)
-            {
-                Console.WriteLine(item.Key + ": " + item.Value.Name);
-            }
-           
+            var damage = Damage();
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Name: {Name}");
+            sb.AppendLine($"Level: {Level}");
+            sb.AppendLine($"Total Strength: {totalAttributes.Strength}");
+            sb.AppendLine($"Total Dexterity: {totalAttributes.Dexterity}");
+            sb.AppendLine($"Total Intelligence: {totalAttributes.Intelligence}");
+            sb.AppendLine($"Damage: {damage}");
+            Console.WriteLine(sb.ToString());
         }
     }
 }

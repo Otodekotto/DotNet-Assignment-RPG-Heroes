@@ -8,17 +8,20 @@ namespace DotNet_Assignment_RPG_Heroes
     {
         static void Main(string[] args)
         {
-            var armor = new Armor { Name = "Dawn Armor", RequiredLevel = 1, ArmorType = ArmorType.Mail};
-            Console.WriteLine(armor.Name);
-            Console.WriteLine(armor.RequiredLevel);
-            Console.WriteLine(armor.ArmorType);
+            //var armor = new Armor { Name = "Dawn Armor", RequiredLevel = 1, ArmorType = ArmorType.Mail};
+            //Console.WriteLine(armor.Name);
+            //Console.WriteLine(armor.RequiredLevel);
+            //Console.WriteLine(armor.ArmorType);
 
-            var weapon = new Weapon { Name ="Axecalibur", RequiredLevel = 1, WeaponType = WeaponType.Axe };
+            string name = "Axecalibur";
+            int requiredLevel = 1;
+            int weaponDamage = 999;
+            var weapon = new Weapon(name, requiredLevel, WeaponType.Axe, weaponDamage);
 
             var hero = new Warrior("Moon");
             hero.Damage();
             hero.Equip(weapon);
-            hero.Equip(armor);
+            //hero.Equip(armor);
             hero.Damage();
             hero.Display();
         }

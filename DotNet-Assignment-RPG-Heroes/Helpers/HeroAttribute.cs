@@ -20,6 +20,13 @@ namespace DotNet_Assignment_RPG_Heroes.Helper
                    Intelligence == attribute.Intelligence;
         }
 
+        public HeroAttribute(int strength, int dexterity , int intelligence)
+        {
+            this.Strength = strength;
+            this.Dexterity = dexterity;
+            this.Intelligence = intelligence;
+        }
+
         public override int GetHashCode()
         {
             return HashCode.Combine(Strength, Dexterity, Intelligence);
@@ -27,7 +34,7 @@ namespace DotNet_Assignment_RPG_Heroes.Helper
 
         public static HeroAttribute operator + ( HeroAttribute heroCurrentAttribute, HeroAttribute heroLevelUpAttribute)
         {
-            return new HeroAttribute { Strength = heroCurrentAttribute.Strength + heroLevelUpAttribute.Strength, Dexterity = heroCurrentAttribute.Dexterity + heroLevelUpAttribute.Dexterity, Intelligence = heroCurrentAttribute.Intelligence + heroLevelUpAttribute.Intelligence};
+            return new HeroAttribute (heroCurrentAttribute.Strength + heroLevelUpAttribute.Strength, heroCurrentAttribute.Dexterity + heroLevelUpAttribute.Dexterity, heroCurrentAttribute.Intelligence + heroLevelUpAttribute.Intelligence);
         }
 
 

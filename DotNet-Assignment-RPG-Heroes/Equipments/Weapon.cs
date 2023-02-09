@@ -9,9 +9,16 @@ namespace DotNet_Assignment_RPG_Heroes.Equipments
 {
     public class Weapon : Item
     {
-        public override SlotType Slot { get; set; } = SlotType.Weapon;
+        public override SlotType Slot { get; } = SlotType.Weapon;
+        public WeaponType WeaponType { get; private set; }
+        public int WeaponDamage { get; private set; } = 1;
 
-        public WeaponType WeaponType { get; set; }
-        public int WeaponDamage { get; set; } = 1;
+        public Weapon(string name, int requiredLevel , WeaponType weaponType , int weaponDamage) 
+        {
+            this.name = name;
+            this.requiredLevel = requiredLevel;
+            this.WeaponType = weaponType;
+            this.WeaponDamage = weaponDamage;
+        }
     }
 }

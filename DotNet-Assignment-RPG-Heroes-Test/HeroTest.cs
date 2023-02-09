@@ -1,5 +1,7 @@
+using DotNet_Assignment_RPG_Heroes.Equipments;
 using DotNet_Assignment_RPG_Heroes.Helper;
 using DotNet_Assignment_RPG_Heroes.Heroes;
+using DotNet_Assignment_RPG_Heroes.Enums;
 using Moq;
 using System;
 using static System.Net.Mime.MediaTypeNames;
@@ -19,6 +21,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             string expected = name;
             string actual = hero.Name;
             Assert.Equal(expected, actual);
+
         }
         [Fact]
         public void Constructor_InitializeWarriorHero_ShouldCreateWarriorWithLevel()
@@ -36,7 +39,11 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             string name = "Warrior";
             var hero = new Warrior(name);
 
-            HeroAttribute expected = new HeroAttribute { Strength = 5 , Dexterity = 2 , Intelligence = 1 };
+            int strength = 5;
+            int dexterity = 2;
+            int intelligence = 1;
+
+            HeroAttribute expected = new HeroAttribute(strength, dexterity, intelligence);
             HeroAttribute actual = hero.LevelAttribute;
             Assert.Equal(expected, actual);
         }
@@ -67,7 +74,11 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             string name = "Mage";
             var hero = new Mage(name);
 
-            HeroAttribute expected = new HeroAttribute { Strength = 1, Dexterity = 1, Intelligence = 8 };
+            int strength = 1;
+            int dexterity = 1;
+            int intelligence = 8;
+
+            HeroAttribute expected = new HeroAttribute(strength, dexterity, intelligence);
             HeroAttribute actual = hero.LevelAttribute;
             Assert.Equal(expected, actual);
         }
@@ -98,7 +109,11 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             string name = "Ranger";
             var hero = new Ranger(name);
 
-            HeroAttribute expected = new HeroAttribute { Strength = 1, Dexterity = 7, Intelligence = 1 };
+            int strength = 1;
+            int dexterity = 7;
+            int intelligence = 1;
+
+            HeroAttribute expected = new HeroAttribute(strength, dexterity, intelligence);
             HeroAttribute actual = hero.LevelAttribute;
             Assert.Equal(expected, actual);
         }
@@ -129,7 +144,11 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             string name = "Rogue";
             var hero = new Rogue(name);
 
-            HeroAttribute expected = new HeroAttribute { Strength = 2, Dexterity = 6, Intelligence = 1 };
+            int strength = 2;
+            int dexterity = 6;
+            int intelligence = 1;
+
+            HeroAttribute expected = new HeroAttribute (strength , dexterity, intelligence);
             HeroAttribute actual = hero.LevelAttribute;
             Assert.Equal(expected, actual);
         }
@@ -153,8 +172,12 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             string name = "Warrior";
             var hero = new Warrior(name);
 
+            int strength = 8;
+            int dexterity = 4;
+            int intelligence = 2;
+
             hero.LevelUp();
-            HeroAttribute expected = new HeroAttribute { Strength = 8, Dexterity = 4, Intelligence = 2 };
+            HeroAttribute expected = new HeroAttribute(strength, dexterity, intelligence);
             HeroAttribute actual = hero.LevelAttribute;
             Assert.Equal(expected, actual);
         }
@@ -175,9 +198,11 @@ namespace DotNet_Assignment_RPG_Heroes_Test
         {
             string name = "Mage";
             var hero = new Mage(name);
-
+            int strength = 2;
+            int dexterity = 2;
+            int intelligence = 13;
             hero.LevelUp();
-            HeroAttribute expected = new HeroAttribute { Strength = 2, Dexterity = 2, Intelligence = 13 };
+            HeroAttribute expected = new HeroAttribute (strength , dexterity, intelligence);
             HeroAttribute actual = hero.LevelAttribute;
             Assert.Equal(expected, actual);
         }
@@ -200,7 +225,10 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             var hero = new Ranger(name);
 
             hero.LevelUp();
-            HeroAttribute expected = new HeroAttribute { Strength = 2, Dexterity = 12, Intelligence = 2 };
+            int strength = 2;
+            int dexterity = 12;
+            int intelligence = 2;
+            HeroAttribute expected = new HeroAttribute ( strength, dexterity, intelligence);
             HeroAttribute actual = hero.LevelAttribute;
             Assert.Equal(expected, actual);
         }
@@ -221,8 +249,139 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             string name = "Rogue";
             var hero = new Rogue(name);
             hero.LevelUp();
-            HeroAttribute expected = new HeroAttribute { Strength = 3, Dexterity = 10, Intelligence = 2 };
+
+            int strength = 3;
+            int dexterity = 10;
+            int intelligence = 2;
+
+            HeroAttribute expected = new HeroAttribute(strength, dexterity, intelligence);
             HeroAttribute actual = hero.LevelAttribute;
+            Assert.Equal(expected, actual);
+        }
+        #endregion
+
+        #region ItemCreation
+        [Fact]
+        public void Constructor_InitializeWeapon_ShouldCreateWeaponWithCorrectName()
+        {
+            string name = "Axecalibur";
+            int requiredLevel = 1;
+            int weaponDamage = 999;
+            var weapon = new Weapon(name , requiredLevel, WeaponType.Axe , weaponDamage);
+
+            var expected = name;
+            var actual = weapon.Name;
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Constructor_InitializeWeapon_ShouldCreateWeaponWithCorrectRequiredLevel()
+        {
+            string name = "Axecalibur";
+            int requiredLevel = 1;
+            int weaponDamage = 999;
+            var weapon = new Weapon(name, requiredLevel, WeaponType.Axe, weaponDamage);
+
+            var expected = requiredLevel;
+            var actual = weapon.RequiredLevel;
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Constructor_InitializeWeapon_ShouldCreateWeaponWithCorrectSlotType()
+        {
+            string name = "Axecalibur";
+            int requiredLevel = 1;
+            int weaponDamage = 999;
+            var weapon = new Weapon(name, requiredLevel, WeaponType.Axe, weaponDamage);
+
+            var expected = SlotType.Weapon;
+            var actual = weapon.Slot;
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Constructor_InitializeWeapon_ShouldCreateWeaponWithCorrectWeaponDamage()
+        {
+            string name = "Axecalibur";
+            int requiredLevel = 1;
+            int weaponDamage = 999;
+            var weapon = new Weapon(name, requiredLevel, WeaponType.Axe, weaponDamage);
+
+            var expected = weaponDamage;
+            var actual = weapon.WeaponDamage;
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Constructor_InitializeArmor_ShouldCreateArmorWithCorrectName()
+        {
+            string name = "Dawn Armor";
+            int requiredLevel = 1;
+            int strength = 1;
+            int dexterity = 1;
+            int intelligence = 1;
+            HeroAttribute armorAttribute = new HeroAttribute (strength,dexterity,intelligence );
+            var armor = new Armor(name, requiredLevel, SlotType.Head , ArmorType.Mail , armorAttribute);
+
+            var expected = name;
+            var actual = armor.Name;
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Constructor_InitializeWeapon_ShouldCreateArmorWithCorrectRequiredLevel()
+        {
+            string name = "Dawn Armor";
+            int requiredLevel = 1;
+            int strength = 1;
+            int dexterity = 1;
+            int intelligence = 1;
+            HeroAttribute armorAttribute = new HeroAttribute(strength, dexterity, intelligence);
+            var armor = new Armor(name, requiredLevel, SlotType.Head, ArmorType.Mail, armorAttribute);
+
+            var expected = requiredLevel;
+            var actual = armor.RequiredLevel;
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Constructor_InitializeWeapon_ShouldCreateArmorWithCorrectSlotType()
+        {
+            string name = "Dawn Armor";
+            int requiredLevel = 1;
+            int strength = 1;
+            int dexterity = 1;
+            int intelligence = 1;
+            HeroAttribute armorAttribute = new HeroAttribute(strength, dexterity, intelligence);
+            var armor = new Armor(name, requiredLevel, SlotType.Head, ArmorType.Mail, armorAttribute);
+
+            var expected = SlotType.Head;
+            var actual = armor.Slot;
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Constructor_InitializeWeapon_ShouldCreateArmorWithCorrectArmorType()
+        {
+            string name = "Dawn Armor";
+            int requiredLevel = 1;
+            int strength = 1;
+            int dexterity = 1;
+            int intelligence = 1;
+            HeroAttribute armorAttribute = new HeroAttribute(strength, dexterity, intelligence);
+            var armor = new Armor(name, requiredLevel, SlotType.Head, ArmorType.Mail, armorAttribute);
+
+            var expected = ArmorType.Mail;
+            var actual = armor.ArmorType;
+            Assert.Equal(expected, actual);
+        }
+        public void Constructor_InitializeWeapon_ShouldCreateArmorWithCorrectArmorAttribute()
+        {
+            string name = "Dawn Armor";
+            int requiredLevel = 1;
+            int strength = 1;
+            int dexterity = 1;
+            int intelligence = 1;
+            HeroAttribute armorAttribute = new HeroAttribute(strength, dexterity, intelligence);
+            var armor = new Armor(name, requiredLevel, SlotType.Head, ArmorType.Mail, armorAttribute);
+
+            var expected = armorAttribute;
+            var actual = armor.ArmorAttribute;
             Assert.Equal(expected, actual);
         }
         #endregion
