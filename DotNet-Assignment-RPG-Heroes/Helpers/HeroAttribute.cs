@@ -8,9 +8,9 @@ namespace DotNet_Assignment_RPG_Heroes.Helper
 {
     public class HeroAttribute
     {
-        public int Strength { get; set; }
-        public int Dexterity { get; set; }
-        public int Intelligence { get; set; }
+        public int Strength { get; private set; }
+        public int Dexterity { get; private set; }
+        public int Intelligence { get; private set; }
 
         public override bool Equals(object? obj)
         {

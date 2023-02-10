@@ -14,10 +14,10 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         public Ranger(string name) : base(name)
         {
         }
-        public override string Class { get;} = "Ranger";
+        protected override string Class { get;} = "Ranger";
         public override HeroAttribute LevelAttribute { get; set; } = new HeroAttribute ( 1 , 7 , 1 );
-        public override List<WeaponType> ValidWeaponTypes { get; } = new List<WeaponType> { WeaponType.Bow};
-        public override List<ArmorType> ValidArmorTypes { get; } = new List<ArmorType> { ArmorType.Leather , ArmorType.Mail };
+        protected override List<WeaponType> ValidWeaponTypes { get; } = new List<WeaponType> { WeaponType.Bow};
+        protected override List<ArmorType> ValidArmorTypes { get; } = new List<ArmorType> { ArmorType.Leather , ArmorType.Mail };
 
 
         public override void LevelUp()

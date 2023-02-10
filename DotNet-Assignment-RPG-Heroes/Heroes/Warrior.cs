@@ -15,10 +15,10 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         public Warrior(string name) : base(name)
         {
         }
-        public override string Class { get; } = "Warrior";
+        protected override string Class { get; } = "Warrior";
         public override HeroAttribute LevelAttribute { get; set; } = new HeroAttribute ( 5 ,  2 ,  1);
-        public override List<WeaponType> ValidWeaponTypes { get;} = new List<WeaponType> { WeaponType.Axe, WeaponType.Hammer, WeaponType.Sword};
-        public override List<ArmorType> ValidArmorTypes { get; } = new List<ArmorType> { ArmorType.Mail, ArmorType.Plate };
+        protected override List<WeaponType> ValidWeaponTypes { get;} = new List<WeaponType> { WeaponType.Axe, WeaponType.Hammer, WeaponType.Sword};
+        protected override List<ArmorType> ValidArmorTypes { get; } = new List<ArmorType> { ArmorType.Mail, ArmorType.Plate };
 
        
 

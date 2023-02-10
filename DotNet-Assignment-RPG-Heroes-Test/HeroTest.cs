@@ -400,6 +400,26 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             var expected = "You Do Not Have The Requirement To Equip This Weapon!";
             var actual = Assert.Throws<InvalidWeaponException>(() => warrior.Equip(weapon)).Message;
         }
+        [Fact]
+        public void Function_HeroEquippingWeapon_ShouldBeAbleToEquipIt()
+        {
+
+            var warrior = new Warrior("Jakob");
+            string name = "Axecalibur";
+            int requiredLevel = 1;
+            int weaponDamage = 999;
+            var weapon = new Weapon(name, requiredLevel, WeaponType.Axe, weaponDamage);
+
+            warrior.Equip(weapon);
+            
+            warrior.Equipments.TryGetValue(SlotType.Weapon, out Item? item);
+            Weapon? currentWeapon = item as Weapon;
+
+            var expected = weapon;
+            var actual = currentWeapon;
+
+            Assert.Equal(expected, actual);
+        }
 
         #endregion
     }

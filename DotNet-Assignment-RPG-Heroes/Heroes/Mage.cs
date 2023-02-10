@@ -14,19 +14,21 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         public Mage(string name) : base(name)
         {
         }
-        public override string Class { get; } = "Mage";
+        protected override string Class { get; } = "Mage";
         public override HeroAttribute LevelAttribute { get; set; } = new HeroAttribute(1, 1, 8);
-        public override List<WeaponType> ValidWeaponTypes { get; } = new List<WeaponType> { WeaponType.Staff, WeaponType.Wand};
-        public override List<ArmorType> ValidArmorTypes { get; } = new List<ArmorType> { ArmorType.Cloth};
+        protected override List<WeaponType> ValidWeaponTypes { get; } = new List<WeaponType> { WeaponType.Staff, WeaponType.Wand};
+        protected override List<ArmorType> ValidArmorTypes { get; } = new List<ArmorType> { ArmorType.Cloth};
        
 
         public override void LevelUp()
         {
             Level += 1;
+
             int strength = 1;
             int dexterity = 1;
             int intelligence = 5;
             HeroAttribute heroLevelUpAttribute = new HeroAttribute (strength, dexterity, intelligence);
+            
             LevelAttribute += heroLevelUpAttribute;
         }
     }
