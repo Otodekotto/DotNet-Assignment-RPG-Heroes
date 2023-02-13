@@ -278,8 +278,8 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             int requiredLevel = 4;
             int weaponDamage = 999;
             var expected = "You Do Not Have The Requirement To Equip This Weapon!";
-
             var weapon = new Weapon(name, requiredLevel, WeaponType.Axe, weaponDamage);
+
             var actual = Assert.Throws<InvalidWeaponException>(() => warrior.Equip(weapon)).Message;
 
             Assert.Equal(expected , actual);
@@ -303,6 +303,82 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void Function_HeroEquippingWrongArmor_ShouldGiveInvalidArmorException()
+        {
+            var warrior = new Warrior("Jakob");
+            string name = "Dawn Armor";
+            int requiredLevel = 4;
+            int strength = 100;
+            int dexterity = 50;
+            int intelligence = 0;
+            HeroAttribute armorAttribute = new HeroAttribute(strength, dexterity, intelligence);
+            var expected = "You Do Not Have The Requirement To Equip This Armor!";
+            var armor = new Armor(name, requiredLevel, SlotType.Body , ArmorType.Mail , armorAttribute);
+
+            var actual = Assert.Throws<InvalidArmorException>(() => warrior.Equip(armor)).Message;
+
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Function_HeroEquippingArmor_ShouldBeAbleToEquipIt()
+        {
+
+            var warrior = new Warrior("Jakob");
+            string name = "Dawn Armor";
+            int requiredLevel = 1;
+            int strength = 100;
+            int dexterity = 50;
+            int intelligence = 0;
+            HeroAttribute armorAttribute = new HeroAttribute(strength, dexterity, intelligence);
+            var armor = new Armor(name, requiredLevel, SlotType.Body, ArmorType.Mail, armorAttribute);
+            var expected = armor;
+
+            warrior.Equip(armor);
+            warrior.Equipments.TryGetValue(SlotType.Body, out Item? item);
+            Armor? currentWeapon = item as Armor;
+            var actual = currentWeapon;
+
+            Assert.Equal(expected, actual);
+        }
+
+        #endregion
+
+        #region HeroAttributeCalculation
+        [Fact]
+        public void Function_CalculatingHeroAttributeWithZeroArmorEquipment_ShouldGiveCorrectAttributeWithoutEquipment()
+        {
+            var warrior = new Warrior("Jakob");
+            int strength = 5;
+            int dexterity = 2;
+            int intelligence = 1;
+            HeroAttribute expected = new HeroAttribute(strength, dexterity, intelligence);
+
+            var actual = warrior.TotalAttributes();
+
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Function_CalculatingHeroAttributeWithOneArmorEquipment_ShouldGiveCorrectAttributeOneEquipment()
+        {
+            var warrior = new Warrior("Jack");
+            int expectedStrength = 105;
+            int expectedDexterity = 52;
+            int expectedIntelligence = 1;
+            string name = "Dawn Armor";
+            int requiredLevel = 1;
+            int armorStrength = 100;
+            int armorDexterity = 50;
+            int armorIntelligence = 0;
+            HeroAttribute armorAttribute = new HeroAttribute(armorStrength, armorDexterity, armorIntelligence);
+            var armor = new Armor(name, requiredLevel, SlotType.Body, ArmorType.Mail, armorAttribute);
+            HeroAttribute expected = new HeroAttribute(expectedStrength, expectedDexterity, expectedIntelligence);
+            warrior.Equip(armor);
+
+            var actual = warrior.TotalAttributes();
+
+            Assert.Equal(expected, actual);
+        }
         #endregion
     }
 }   
