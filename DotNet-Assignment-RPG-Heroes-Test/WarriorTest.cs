@@ -1,20 +1,18 @@
+﻿using DotNet_Assignment_RPG_Heroes.CustomExceptions;
+using DotNet_Assignment_RPG_Heroes.Enums;
 using DotNet_Assignment_RPG_Heroes.Equipments;
 using DotNet_Assignment_RPG_Heroes.Helper;
 using DotNet_Assignment_RPG_Heroes.Heroes;
-using DotNet_Assignment_RPG_Heroes.Enums;
-using Moq;
 using System;
-using static System.Net.Mime.MediaTypeNames;
-using DotNet_Assignment_RPG_Heroes.CustomExceptions;
-using System.Reflection.Emit;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using System.Xml.Linq;
+using System.Threading.Tasks;
 
 namespace DotNet_Assignment_RPG_Heroes_Test
 {
-    public class HeroTest
+    public class WarriorTest
     {
-
         #region HeroCreation
         [Fact]
         public void Constructor_InitializeWarriorHero_ShouldCreateWarriorWithName()
@@ -50,118 +48,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
 
             var hero = new Warrior(name);
             HeroAttribute actual = hero.LevelAttribute;
-            
-            Assert.Equal(expected, actual);
-        }
-        
-        [Fact]
-        public void Constructor_InitializeMageHero_ShouldCreateMageWithName()
-        {
-            string name = "Mage";
-            string expected = name;
 
-            var hero = new Mage(name);
-            string actual = hero.Name;
-
-            Assert.Equal(expected, actual);
-        }
-        [Fact]
-        public void Constructor_InitializeMageHero_ShouldCreateMageWithLevel()
-        {
-            string name = "Mage";
-            int expected = 1;
-
-            var hero = new Mage(name);
-            int actual = hero.Level;
-            
-            Assert.Equal(expected, actual);
-        }
-        [Fact]
-        public void Constructor_InitializeMageHero_ShouldCreateMageWithAttributes()
-        {
-            string name = "Mage";
-            int strength = 1;
-            int dexterity = 1;
-            int intelligence = 8;
-            HeroAttribute expected = new HeroAttribute(strength, dexterity, intelligence);
-
-            var hero = new Mage(name);
-            HeroAttribute actual = hero.LevelAttribute;
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Constructor_InitializeRangerHero_ShouldCreateRangerWithName()
-        {
-            string name = "Ranger";
-            string expected = name;
-
-            var hero = new Ranger(name);
-            string actual = hero.Name;
-            
-            Assert.Equal(expected, actual);
-        }
-        [Fact]
-        public void Constructor_InitializeRangerHero_ShouldCreateRangerWithLevel()
-        {
-            string name = "Ranger";
-            int expected = 1;
-
-            var hero = new Ranger(name);
-            int actual = hero.Level;
-
-            Assert.Equal(expected, actual);
-        }
-        [Fact]
-        public void Constructor_InitializeRangerHero_ShouldCreateRangerWithAttributes()
-        {
-            string name = "Ranger";
-            int strength = 1;
-            int dexterity = 7;
-            int intelligence = 1;
-            HeroAttribute expected = new HeroAttribute(strength, dexterity, intelligence);
-
-            var hero = new Ranger(name);
-            HeroAttribute actual = hero.LevelAttribute;
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Constructor_InitializeRogueHero_ShouldCreateRogueWithName()
-        {
-            string name = "Rogue";
-            string expected = name;
-
-            var hero = new Rogue(name);
-            string actual = hero.Name;
-
-            Assert.Equal(expected, actual);
-        }
-        [Fact]
-        public void Constructor_InitializeRogueHero_ShouldCreateRogueWithLevel()
-        {
-            string name = "Rogue";
-            int expected = 1;
-
-            var hero = new Rogue(name);
-            int actual = hero.Level;
-
-            Assert.Equal(expected, actual);
-        }
-        [Fact]
-        public void Constructor_InitializeRogueHero_ShouldCreateRogueWithAttributes()
-        {
-            string name = "Rogue";
-            int strength = 2;
-            int dexterity = 6;
-            int intelligence = 1;
-            HeroAttribute expected = new HeroAttribute (strength , dexterity, intelligence);
-
-            var hero = new Rogue(name);
-            HeroAttribute actual = hero.LevelAttribute;
-            
             Assert.Equal(expected, actual);
         }
         #endregion
@@ -193,83 +80,6 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             HeroAttribute actual = hero.LevelAttribute;
             Assert.Equal(expected, actual);
         }
-
-        [Fact]
-        public void Constructor_MageLevelUp_ShouldLevelUpAndGetALevel()
-        {
-            string name = "Mage";
-            var hero = new Mage(name);
-
-            hero.LevelUp();
-            var expected = 2;
-            var actual = hero.Level;
-            Assert.Equal(expected, actual);
-        }
-        [Fact]
-        public void Constructor_MageLevelUp_ShouldLevelUpAndGetCorrectAttribute()
-        {
-            string name = "Mage";
-            var hero = new Mage(name);
-            int strength = 2;
-            int dexterity = 2;
-            int intelligence = 13;
-            hero.LevelUp();
-            HeroAttribute expected = new HeroAttribute (strength , dexterity, intelligence);
-            HeroAttribute actual = hero.LevelAttribute;
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Constructor_RangerLevelUp_ShouldLevelUpAndGetALevel()
-        {
-            string name = "Ranger";
-            var hero = new Ranger(name);
- 
-            hero.LevelUp();
-            var expected = 2;
-            var actual = hero.Level;
-            Assert.Equal(expected, actual);
-        }
-        [Fact]
-        public void Constructor_RangerLevelUp_ShouldLevelUpAndGetCorrectAttribute()
-        {
-            string name = "Ranger";
-            var hero = new Ranger(name);
-
-            hero.LevelUp();
-            int strength = 2;
-            int dexterity = 12;
-            int intelligence = 2;
-            HeroAttribute expected = new HeroAttribute ( strength, dexterity, intelligence);
-            HeroAttribute actual = hero.LevelAttribute;
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Constructor_RogueLevelUp_ShouldLevelUpAndGetALevel()
-        {
-            string name = "Rogue";
-            var hero = new Rogue(name);
-            hero.LevelUp();
-            var expected = 2;
-            var actual = hero.Level;
-            Assert.Equal(expected, actual);
-        }
-        [Fact]
-        public void Constructor_RogueLevelUp_ShouldLevelUpAndGetCorrectAttribute()
-        {
-            string name = "Rogue";
-            var hero = new Rogue(name);
-            hero.LevelUp();
-
-            int strength = 3;
-            int dexterity = 10;
-            int intelligence = 2;
-
-            HeroAttribute expected = new HeroAttribute(strength, dexterity, intelligence);
-            HeroAttribute actual = hero.LevelAttribute;
-            Assert.Equal(expected, actual);
-        }
         #endregion
 
         #region HeroEquipItem
@@ -285,7 +95,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
 
             var actual = Assert.Throws<InvalidWeaponException>(() => warrior.Equip(weapon)).Message;
 
-            Assert.Equal(expected , actual);
+            Assert.Equal(expected, actual);
         }
         [Fact]
         public void Function_HeroEquippingWeapon_ShouldBeAbleToEquipIt()
@@ -317,7 +127,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             int intelligence = 0;
             HeroAttribute armorAttribute = new HeroAttribute(strength, dexterity, intelligence);
             var expected = "You Do Not Have The Requirement To Equip This Armor!";
-            var armor = new Armor(name, requiredLevel, SlotType.Body , ArmorType.Mail , armorAttribute);
+            var armor = new Armor(name, requiredLevel, SlotType.Body, ArmorType.Mail, armorAttribute);
 
             var actual = Assert.Throws<InvalidArmorException>(() => warrior.Equip(armor)).Message;
 
@@ -462,8 +272,8 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             double damagingAttribute = 5;
             var heroDamage = (int)(weaponDamage * (1 + (damagingAttribute / 100)));
             var expected = heroDamage;
-           
-            
+
+
             var actual = warrior.Damage();
 
             Assert.Equal(expected, actual);
@@ -477,7 +287,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             int requiredLevel = 1;
             int weaponDamage = 9999;
             int weaponDamageAxe = 999;
-            int weaponTwoDamageSword= 9999;
+            int weaponTwoDamageSword = 9999;
             var weapon = new Weapon(axeName, requiredLevel, WeaponType.Axe, weaponDamageAxe);
             var weaponTwo = new Weapon(swordName, requiredLevel, WeaponType.Sword, weaponTwoDamageSword);
             warrior.Equip(weapon);
@@ -541,75 +351,6 @@ namespace DotNet_Assignment_RPG_Heroes_Test
 
             Assert.Equal(expected, actual);
         }
-        [Fact]
-        public void Function_CallOnDisplayFunctionForMage_ShouldDisplayCorrectMageState()
-        {
-            string name = "Julian";
-            int level = 1;
-            int strength = 1;
-            int dexterity = 1;
-            int intelligence = 8;
-            int damage = 1;
-            var mage = new Mage(name);
-            StringBuilder mageStatus = new();
-            mageStatus.AppendLine($"Name: {name}");
-            mageStatus.AppendLine($"Level: {level}");
-            mageStatus.AppendLine($"Total Strength: {strength}");
-            mageStatus.AppendLine($"Total Dexterity: {dexterity}");
-            mageStatus.AppendLine($"Total Intelligence: {intelligence}");
-            mageStatus.AppendLine($"Damage: {damage}");
-            var expected = mageStatus.ToString();
-
-            var actual = mage.Display();
-
-            Assert.Equal(expected, actual);
-        }
-        [Fact]
-        public void Function_CallOnDisplayFunctionForRanger_ShouldDisplayCorrectRangerState()
-        {
-            string name = "Joseph";
-            int level = 1;
-            int strength = 1;
-            int dexterity = 7;
-            int intelligence = 1;
-            int damage = 1;
-            var ranger = new Ranger(name);
-            StringBuilder rangerStatus = new();
-            rangerStatus.AppendLine($"Name: {name}");
-            rangerStatus.AppendLine($"Level: {level}");
-            rangerStatus.AppendLine($"Total Strength: {strength}");
-            rangerStatus.AppendLine($"Total Dexterity: {dexterity}");
-            rangerStatus.AppendLine($"Total Intelligence: {intelligence}");
-            rangerStatus.AppendLine($"Damage: {damage}");
-            var expected = rangerStatus.ToString();
-
-            var actual = ranger.Display();
-
-            Assert.Equal(expected, actual);
-        }
-        [Fact]
-        public void Function_CallOnDisplayFunctionForRogue_ShouldDisplayCorrectRogueState()
-        {
-            string name = "James";
-            int level = 1;
-            int strength = 2;
-            int dexterity = 6;
-            int intelligence = 1;
-            int damage = 1;
-            var rogue = new Rogue(name);
-            StringBuilder rogueStatus = new();
-            rogueStatus.AppendLine($"Name: {name}");
-            rogueStatus.AppendLine($"Level: {level}");
-            rogueStatus.AppendLine($"Total Strength: {strength}");
-            rogueStatus.AppendLine($"Total Dexterity: {dexterity}");
-            rogueStatus.AppendLine($"Total Intelligence: {intelligence}");
-            rogueStatus.AppendLine($"Damage: {damage}");
-            var expected = rogueStatus.ToString();
-
-            var actual = rogue.Display();
-
-            Assert.Equal(expected, actual);
-        }
         #endregion
     }
-}   
+}
