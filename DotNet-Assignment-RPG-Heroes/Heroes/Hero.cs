@@ -91,7 +91,7 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             }
             return totalAttributes;
         }
-        public void Display() 
+        public string Display() 
         {
             HeroAttribute totalAttributes = TotalAttributes();
 
@@ -101,8 +101,8 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             sb.AppendLine($"Total Strength: {totalAttributes.Strength}");
             sb.AppendLine($"Total Dexterity: {totalAttributes.Dexterity}");
             sb.AppendLine($"Total Intelligence: {totalAttributes.Intelligence}");
-            sb.AppendLine($"Damage:" + Damage());
-            Console.WriteLine(sb.ToString());
+            sb.AppendLine($"Damage: " + Damage());
+            return sb.ToString();
         }
     }
 }

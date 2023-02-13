@@ -6,6 +6,9 @@ using Moq;
 using System;
 using static System.Net.Mime.MediaTypeNames;
 using DotNet_Assignment_RPG_Heroes.CustomExceptions;
+using System.Reflection.Emit;
+using System.Text;
+using System.Xml.Linq;
 
 namespace DotNet_Assignment_RPG_Heroes_Test
 {
@@ -509,6 +512,101 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             var expected = heroDamage;
 
             var actual = warrior.Damage();
+
+            Assert.Equal(expected, actual);
+        }
+        #endregion
+
+        #region Heroes Dispaly
+        [Fact]
+        public void Function_CallOnDisplayFunctionForWarrior_ShouldDisplayCorrectWarriorState()
+        {
+            string name = "Jimmy";
+            int level = 1;
+            int strength = 5;
+            int dexterity = 2;
+            int intelligence = 1;
+            int damage = 1;
+            var warrior = new Warrior(name);
+            StringBuilder warriorStatus = new();
+            warriorStatus.AppendLine($"Name: {name}");
+            warriorStatus.AppendLine($"Level: {level}");
+            warriorStatus.AppendLine($"Total Strength: {strength}");
+            warriorStatus.AppendLine($"Total Dexterity: {dexterity}");
+            warriorStatus.AppendLine($"Total Intelligence: {intelligence}");
+            warriorStatus.AppendLine($"Damage: {damage}");
+            var expected = warriorStatus.ToString();
+
+            var actual = warrior.Display();
+
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Function_CallOnDisplayFunctionForMage_ShouldDisplayCorrectMageState()
+        {
+            string name = "Julian";
+            int level = 1;
+            int strength = 1;
+            int dexterity = 1;
+            int intelligence = 8;
+            int damage = 1;
+            var mage = new Mage(name);
+            StringBuilder mageStatus = new();
+            mageStatus.AppendLine($"Name: {name}");
+            mageStatus.AppendLine($"Level: {level}");
+            mageStatus.AppendLine($"Total Strength: {strength}");
+            mageStatus.AppendLine($"Total Dexterity: {dexterity}");
+            mageStatus.AppendLine($"Total Intelligence: {intelligence}");
+            mageStatus.AppendLine($"Damage: {damage}");
+            var expected = mageStatus.ToString();
+
+            var actual = mage.Display();
+
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Function_CallOnDisplayFunctionForRanger_ShouldDisplayCorrectRangerState()
+        {
+            string name = "Joseph";
+            int level = 1;
+            int strength = 1;
+            int dexterity = 7;
+            int intelligence = 1;
+            int damage = 1;
+            var ranger = new Ranger(name);
+            StringBuilder rangerStatus = new();
+            rangerStatus.AppendLine($"Name: {name}");
+            rangerStatus.AppendLine($"Level: {level}");
+            rangerStatus.AppendLine($"Total Strength: {strength}");
+            rangerStatus.AppendLine($"Total Dexterity: {dexterity}");
+            rangerStatus.AppendLine($"Total Intelligence: {intelligence}");
+            rangerStatus.AppendLine($"Damage: {damage}");
+            var expected = rangerStatus.ToString();
+
+            var actual = ranger.Display();
+
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Function_CallOnDisplayFunctionForRogue_ShouldDisplayCorrectRogueState()
+        {
+            string name = "James";
+            int level = 1;
+            int strength = 2;
+            int dexterity = 6;
+            int intelligence = 1;
+            int damage = 1;
+            var rogue = new Rogue(name);
+            StringBuilder rogueStatus = new();
+            rogueStatus.AppendLine($"Name: {name}");
+            rogueStatus.AppendLine($"Level: {level}");
+            rogueStatus.AppendLine($"Total Strength: {strength}");
+            rogueStatus.AppendLine($"Total Dexterity: {dexterity}");
+            rogueStatus.AppendLine($"Total Intelligence: {intelligence}");
+            rogueStatus.AppendLine($"Damage: {damage}");
+            var expected = rogueStatus.ToString();
+
+            var actual = rogue.Display();
 
             Assert.Equal(expected, actual);
         }
