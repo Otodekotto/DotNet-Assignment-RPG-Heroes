@@ -24,10 +24,6 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         public abstract HeroAttribute LevelAttribute { get; set; }
         public Dictionary<SlotType, Item?> Equipments = new()
         {
-            //[SlotType.Head] = new Armor { Name = "Naked"},
-            //[SlotType.Body] = new Armor { Name = "Naked" },
-            //[SlotType.Legs] = new Armor { Name = "Naked" },
-            [SlotType.Weapon] = new Weapon("Bare Hands", 0, WeaponType.BareHands , 1)
         };
         protected abstract List<WeaponType> ValidWeaponTypes { get; }
         protected abstract List<ArmorType> ValidArmorTypes { get; }
@@ -60,12 +56,12 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             int heroDamage;
             Equipments.TryGetValue(SlotType.Weapon, out Item? item);
             Weapon weapon = item as Weapon;
-
-            //todo change to 2 decimal max
-
-            heroDamage =(int)(weapon.WeaponDamage * (1 + (damagingAttribute / 100)));
-
-            return heroDamage;
+            if(weapon == null)
+            {
+                return heroDamage = (int)(1 * (1 + (damagingAttribute / 100)));
+            }
+            else
+                return heroDamage = (int)(weapon.WeaponDamage * (1 + (damagingAttribute / 100)));
         }
         private int GetDamagingAttribute()
         {

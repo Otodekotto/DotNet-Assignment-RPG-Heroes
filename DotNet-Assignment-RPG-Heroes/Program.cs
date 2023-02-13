@@ -24,6 +24,7 @@ namespace DotNet_Assignment_RPG_Heroes
             var weapon = new Weapon(name, requiredLevel, WeaponType.Axe, weaponDamage);
 
             var hero = new Warrior("Moon");
+            hero.Display();
             hero.Equip(weapon);
             hero.Equip(armor);
 

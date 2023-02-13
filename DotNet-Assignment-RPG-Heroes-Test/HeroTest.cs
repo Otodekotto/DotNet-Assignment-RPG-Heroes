@@ -379,6 +379,139 @@ namespace DotNet_Assignment_RPG_Heroes_Test
 
             Assert.Equal(expected, actual);
         }
+        [Fact]
+        public void Function_CalculatingHeroAttributeWithTwoArmorEquipment_ShouldGiveCorrectAttributeTwoEquipment()
+        {
+            var warrior = new Warrior("Jack");
+            int expectedStrength = 205;
+            int expectedDexterity = 102;
+            int expectedIntelligence = 1;
+            string armorName = "Dawn Armor";
+            string helmetName = "Dawn Helmet";
+            int requiredLevel = 1;
+            int armorStrength = 100;
+            int armorDexterity = 50;
+            int armorIntelligence = 0;
+            HeroAttribute armorAttribute = new HeroAttribute(armorStrength, armorDexterity, armorIntelligence);
+            var armor = new Armor(armorName, requiredLevel, SlotType.Body, ArmorType.Mail, armorAttribute);
+            var armorTwo = new Armor(helmetName, requiredLevel, SlotType.Head, ArmorType.Mail, armorAttribute);
+            HeroAttribute expected = new HeroAttribute(expectedStrength, expectedDexterity, expectedIntelligence);
+            warrior.Equip(armor);
+            warrior.Equip(armorTwo);
+
+            var actual = warrior.TotalAttributes();
+
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Function_CalculatingHeroAttributeWithWithAReplacedPieceOfArmor_ShouldGiveCorrectAttributeWithTheReplaceEquipment()
+        {
+            var warrior = new Warrior("Jack");
+            int expectedStrength = 5;
+            int expectedDexterity = 52;
+            int expectedIntelligence = 101;
+            string armorName = "Dawn Armor";
+            string armorTwoName = "Dusk Armor";
+            int requiredLevel = 1;
+            int armorStrength = 100;
+            int armorDexterity = 50;
+            int armorIntelligence = 0;
+            int armorTwoStrength = 0;
+            int armorTwoDexterity = 50;
+            int armorTwoIntelligence = 100;
+            HeroAttribute armorAttribute = new HeroAttribute(armorStrength, armorDexterity, armorIntelligence);
+            HeroAttribute armorTwoAttribute = new HeroAttribute(armorTwoStrength, armorTwoDexterity, armorTwoIntelligence);
+            var armor = new Armor(armorName, requiredLevel, SlotType.Body, ArmorType.Mail, armorAttribute);
+            var armorTwo = new Armor(armorTwoName, requiredLevel, SlotType.Body, ArmorType.Mail, armorTwoAttribute);
+            HeroAttribute expected = new HeroAttribute(expectedStrength, expectedDexterity, expectedIntelligence);
+            warrior.Equip(armor);
+            warrior.Equip(armorTwo);
+
+
+            var actual = warrior.TotalAttributes();
+
+            Assert.Equal(expected, actual);
+        }
+        #endregion
+
+        #region HeroDamageCalculation
+
+        [Fact]
+        public void Function_CalculatingHeroDamageWithZeroEquipment_ShouldGiveCorrectHeroDamageWithoutEquipment()
+        {
+            var warrior = new Warrior("Jakob");
+            int heroDamage = 1;
+            var expected = heroDamage;
+
+            var actual = warrior.Damage();
+
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Function_CalculatingHeroDamageWithAWeaponEquipped_ShouldGiveCorrectHeroDamageWithWeaponEquipped()
+        {
+            var warrior = new Warrior("Jakob");
+            string name = "Axecalibur";
+            int requiredLevel = 1;
+            int weaponDamage = 999;
+            var weapon = new Weapon(name, requiredLevel, WeaponType.Axe, weaponDamage);
+            warrior.Equip(weapon);
+            double damagingAttribute = 5;
+            var heroDamage = (int)(weaponDamage * (1 + (damagingAttribute / 100)));
+            var expected = heroDamage;
+           
+            
+            var actual = warrior.Damage();
+
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Function_CalculatingHeroDamageWithAWeaponEquippedButSwappedWithAnotherWeapon_ShouldGiveCorrectHeroDamageWithWeaponEquipped()
+        {
+            var warrior = new Warrior("Jakob");
+            string axeName = "Axecalibur";
+            string swordName = "Excalibur";
+            int requiredLevel = 1;
+            int weaponDamage = 9999;
+            int weaponDamageAxe = 999;
+            int weaponTwoDamageSword= 9999;
+            var weapon = new Weapon(axeName, requiredLevel, WeaponType.Axe, weaponDamageAxe);
+            var weaponTwo = new Weapon(swordName, requiredLevel, WeaponType.Sword, weaponTwoDamageSword);
+            warrior.Equip(weapon);
+            warrior.Equip(weaponTwo);
+            double damagingAttribute = 5;
+            var heroDamage = (int)(weaponDamage * (1 + (damagingAttribute / 100)));
+            var expected = heroDamage;
+
+            var actual = warrior.Damage();
+
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Function_CalculatingHeroDamageWithAWeaponEquippedAndArmor_ShouldGiveCorrectHeroDamageWithWeaponEquippedAndArmor()
+        {
+            var warrior = new Warrior("Jakob");
+            string axeName = "Axecalibur";
+            int requiredLevel = 1;
+            int weaponDamage = 999;
+            int weaponDamageAxe = 999;
+            var weapon = new Weapon(axeName, requiredLevel, WeaponType.Axe, weaponDamageAxe);
+            warrior.Equip(weapon);
+            string name = "Dawn Armor";
+            int armorStrength = 100;
+            int armorDexterity = 50;
+            int armorIntelligence = 0;
+            HeroAttribute armorAttribute = new HeroAttribute(armorStrength, armorDexterity, armorIntelligence);
+            var armor = new Armor(name, requiredLevel, SlotType.Body, ArmorType.Mail, armorAttribute);
+            warrior.Equip(armor);
+            double damagingAttribute = 105;
+            var heroDamage = (int)(weaponDamage * (1 + (damagingAttribute / 100)));
+            var expected = heroDamage;
+
+            var actual = warrior.Damage();
+
+            Assert.Equal(expected, actual);
+        }
         #endregion
     }
 }   
