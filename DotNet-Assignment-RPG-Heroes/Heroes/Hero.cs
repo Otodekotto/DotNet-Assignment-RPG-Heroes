@@ -55,8 +55,7 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             double damagingAttribute = GetDamagingAttribute();
             int heroDamage;
             Equipments.TryGetValue(SlotType.Weapon, out Item? item);
-            Weapon weapon = item as Weapon;
-            if(weapon == null)
+            if (item is not Weapon weapon)
             {
                 return heroDamage = (int)(1 * (1 + (damagingAttribute / 100)));
             }
@@ -81,8 +80,8 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             //Adding Level Attribute to Total Attribute
             HeroAttribute totalAttributes = LevelAttribute;
             foreach (var item in Equipments)
-            { 
-                if(item.Value.Slot != SlotType.Weapon)
+            {
+                if (item.Value.Slot != SlotType.Weapon)
                 {
                     var armor = (Armor)item.Value;
                     //Adding Armor Attribute into Total Attribute

@@ -29,6 +29,9 @@ namespace DotNet_Assignment_RPG_Heroes
             hero.Equip(armor);
 
             hero.Display();
+            hero.Display();
+            Console.WriteLine(hero.Display());
+            Console.WriteLine(hero.Display());
         }
     }
 }
