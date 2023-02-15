@@ -18,6 +18,7 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         public override HeroAttribute LevelAttribute { get; set; } = new HeroAttribute ( 1 , 7 , 1 );
         protected override List<WeaponType> ValidWeaponTypes { get; } = new List<WeaponType> { WeaponType.Bow};
         protected override List<ArmorType> ValidArmorTypes { get; } = new List<ArmorType> { ArmorType.Leather , ArmorType.Mail };
+        protected override string DamageAttribute { get; } = "Dexterity";
 
 
         public override void LevelUp()

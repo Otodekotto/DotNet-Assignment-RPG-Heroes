@@ -20,7 +20,8 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         protected override List<WeaponType> ValidWeaponTypes { get;} = new List<WeaponType> { WeaponType.Axe, WeaponType.Hammer, WeaponType.Sword};
         protected override List<ArmorType> ValidArmorTypes { get; } = new List<ArmorType> { ArmorType.Mail, ArmorType.Plate };
 
-       
+        protected override string DamageAttribute { get; } = "Strength";
+
 
         public override void LevelUp()
         {

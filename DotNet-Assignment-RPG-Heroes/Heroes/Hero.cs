@@ -21,6 +21,7 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         public string Name { get => name; private set => name = value; }
         protected abstract string Class { get;}
         public int Level { get; set; } = 1;
+        protected abstract string DamageAttribute { get; }
         public abstract HeroAttribute LevelAttribute { get; set; }
         public Dictionary<SlotType, Item?> Equipments = new()
         {
@@ -70,9 +71,9 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         {
             HeroAttribute totalAttributes = TotalAttributes();
 
-            if (Class == "Warrior")
+            if (DamageAttribute == "Strength")
                 return totalAttributes.Strength;
-            else if (Class == "Mage")
+            else if (DamageAttribute == "Intelligence")
                 return totalAttributes.Intelligence;
             else
                 return totalAttributes.Dexterity;
