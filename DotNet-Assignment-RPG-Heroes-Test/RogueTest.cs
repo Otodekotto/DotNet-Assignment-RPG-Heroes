@@ -335,9 +335,11 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             int dexterity = 6;
             int intelligence = 1;
             int damage = 1;
+            string heroClass = "Rogue";
             var rogue = new Rogue(name);
             StringBuilder rogueStatus = new();
             rogueStatus.AppendLine($"Name: {name}");
+            rogueStatus.AppendLine($"Class: {heroClass}");
             rogueStatus.AppendLine($"Level: {level}");
             rogueStatus.AppendLine($"Total Strength: {strength}");
             rogueStatus.AppendLine($"Total Dexterity: {dexterity}");

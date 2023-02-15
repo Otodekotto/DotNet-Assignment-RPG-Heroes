@@ -334,9 +334,11 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             int dexterity = 1;
             int intelligence = 8;
             int damage = 1;
+            string heroClass = "Mage";
             var mage = new Mage(name);
             StringBuilder mageStatus = new();
             mageStatus.AppendLine($"Name: {name}");
+            mageStatus.AppendLine($"Class: {heroClass}");
             mageStatus.AppendLine($"Level: {level}");
             mageStatus.AppendLine($"Total Strength: {strength}");
             mageStatus.AppendLine($"Total Dexterity: {dexterity}");

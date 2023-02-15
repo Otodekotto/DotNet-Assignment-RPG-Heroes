@@ -57,10 +57,14 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             Equipments.TryGetValue(SlotType.Weapon, out Item? item);
             if (item is not Weapon weapon)
             {
-                return heroDamage = (int)(1 * (1 + (damagingAttribute / 100)));
+                heroDamage = (int)(1 * (1 + (damagingAttribute / 100)));
+                return heroDamage;
             }
             else
-                return heroDamage = (int)(weapon.WeaponDamage * (1 + (damagingAttribute / 100)));
+            {
+                heroDamage = (int)(weapon.WeaponDamage * (1 + (damagingAttribute / 100)));
+                return heroDamage;
+            }
         }
         private int GetDamagingAttribute()
         {
@@ -87,6 +91,7 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
                     //Adding Armor Attribute into Total Attribute
                     totalAttributes += armor.ArmorAttribute;
                 }
+                
             }
             return totalAttributes;
         }
@@ -96,6 +101,7 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
 
             StringBuilder sb = new();
             sb.AppendLine($"Name: {Name}");
+            sb.AppendLine($"Class: {Class}");
             sb.AppendLine($"Level: {Level}");
             sb.AppendLine($"Total Strength: {totalAttributes.Strength}");
             sb.AppendLine($"Total Dexterity: {totalAttributes.Dexterity}");
