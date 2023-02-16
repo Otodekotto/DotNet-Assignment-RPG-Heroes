@@ -90,13 +90,13 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             HeroAttribute totalAttributes = LevelAttribute;
             foreach (var item in Equipments)
             {
-                if (item.Key != SlotType.Weapon && (Armor)item.Value != null)
+                if (item.Value as Armor != null)
                 {
                     var armor = (Armor)item.Value;
                     //Adding Armor Attribute into Total Attribute
-                    totalAttributes += armor.ArmorAttribute;
+                    if(armor.ArmorAttribute != null)
+                        totalAttributes += armor.ArmorAttribute;
                 }
-                
             }
             return totalAttributes;
         }
