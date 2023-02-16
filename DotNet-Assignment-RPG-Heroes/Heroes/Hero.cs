@@ -25,6 +25,10 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         public abstract HeroAttribute LevelAttribute { get; set; }
         public Dictionary<SlotType, Item?> Equipments = new()
         {
+             {SlotType.Head, null},
+             {SlotType.Body, null},
+             {SlotType.Legs, null},
+             {SlotType.Weapon, null},
         };
         protected abstract List<WeaponType> ValidWeaponTypes { get; }
         protected abstract List<ArmorType> ValidArmorTypes { get; }
@@ -86,7 +90,7 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             HeroAttribute totalAttributes = LevelAttribute;
             foreach (var item in Equipments)
             {
-                if (item.Value.Slot != SlotType.Weapon)
+                if (item.Key != SlotType.Weapon && (Armor)item.Value != null)
                 {
                     var armor = (Armor)item.Value;
                     //Adding Armor Attribute into Total Attribute
