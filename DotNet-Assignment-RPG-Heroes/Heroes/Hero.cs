@@ -55,20 +55,20 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
                 throw new InvalidArmorException();
         }
 
-        public int Damage() 
+        public double Damage() 
         {
             double damagingAttribute = GetDamagingAttribute();
-            int heroDamage;
+            double heroDamage;
             Equipments.TryGetValue(SlotType.Weapon, out Item? item);
             if (item is not Weapon weapon)
             {
-                heroDamage = (int)(1 * (1 + (damagingAttribute / 100)));
-                return heroDamage;
+                heroDamage = (1 * (1 + (damagingAttribute / 100)));
+                return Math.Round(heroDamage, 2);
             }
             else
             {
-                heroDamage = (int)(weapon.WeaponDamage * (1 + (damagingAttribute / 100)));
-                return heroDamage;
+                heroDamage = (weapon.WeaponDamage * (1 + (damagingAttribute / 100)));
+                return Math.Round(heroDamage, 2);
             }
         }
         private int GetDamagingAttribute()
@@ -93,7 +93,6 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
                 if (item.Value as Armor != null)
                 {
                     var armor = (Armor)item.Value;
-                    //Adding Armor Attribute into Total Attribute
                     if(armor.ArmorAttribute != null)
                         totalAttributes += armor.ArmorAttribute;
                 }

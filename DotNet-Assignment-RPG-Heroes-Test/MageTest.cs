@@ -250,7 +250,9 @@ namespace DotNet_Assignment_RPG_Heroes_Test
         public void Function_CalculatingHeroDamageWithZeroEquipment_ShouldGiveCorrectHeroDamageWithoutEquipment()
         {
             var mage = new Mage("Jakob");
-            int heroDamage = 1;
+            double weaponDamage = 1;
+            double damagingAttribute = 8;
+            double heroDamage = Math.Round(weaponDamage * (1 + (damagingAttribute / 100)), 2);
             var expected = heroDamage;
 
             var actual = mage.Damage();
@@ -267,7 +269,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             var weapon = new Weapon(name, requiredLevel, WeaponType.Wand, weaponDamage);
             mage.Equip(weapon);
             double damagingAttribute = 8;
-            var heroDamage = (int)(weaponDamage * (1 + (damagingAttribute / 100)));
+            var heroDamage = Math.Round(weaponDamage * (1 + (damagingAttribute / 100)), 2);
             var expected = heroDamage;
 
 
@@ -290,7 +292,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             mage.Equip(weapon);
             mage.Equip(weaponTwo);
             double damagingAttribute = 8;
-            var heroDamage = (int)(weaponDamage * (1 + (damagingAttribute / 100)));
+            var heroDamage = Math.Round(weaponDamage * (1 + (damagingAttribute / 100)), 2);
             var expected = heroDamage;
 
             var actual = mage.Damage();
@@ -315,7 +317,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             var armor = new Armor(name, requiredLevel, SlotType.Body, ArmorType.Cloth, armorAttribute);
             mage.Equip(armor);
             double damagingAttribute = 108;
-            var heroDamage = (int)(weaponDamage * (1 + (damagingAttribute / 100)));
+            var heroDamage = Math.Round(weaponDamage * (1 + (damagingAttribute / 100)),2);
             var expected = heroDamage;
 
             var actual = mage.Damage();
@@ -332,8 +334,9 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             int level = 1;
             int strength = 1;
             int dexterity = 1;
-            int intelligence = 8;
-            int damage = 1;
+            double intelligence = 8;
+            double weaponDamage = 1;
+            double damage = Math.Round((weaponDamage * (1 + (intelligence / 100))), 2);
             string heroClass = "Mage";
             var mage = new Mage(name);
             StringBuilder mageStatus = new();

@@ -253,7 +253,9 @@ namespace DotNet_Assignment_RPG_Heroes_Test
         public void Function_CalculatingHeroDamageWithZeroEquipment_ShouldGiveCorrectHeroDamageWithoutEquipment()
         {
             var warrior = new Warrior("Jakob");
-            int heroDamage = 1;
+            int weaponDamage = 1;
+            double damagingAttribute = 5;
+            var heroDamage = Math.Round(weaponDamage * (1 + (damagingAttribute / 100)), 2);
             var expected = heroDamage;
 
             var actual = warrior.Damage();
@@ -270,7 +272,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             var weapon = new Weapon(name, requiredLevel, WeaponType.Axe, weaponDamage);
             warrior.Equip(weapon);
             double damagingAttribute = 5;
-            var heroDamage = (int)(weaponDamage * (1 + (damagingAttribute / 100)));
+            var heroDamage = Math.Round(weaponDamage * (1 + (damagingAttribute / 100)),2);
             var expected = heroDamage;
 
 
@@ -293,7 +295,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             warrior.Equip(weapon);
             warrior.Equip(weaponTwo);
             double damagingAttribute = 5;
-            var heroDamage = (int)(weaponDamage * (1 + (damagingAttribute / 100)));
+            var heroDamage = Math.Round(weaponDamage * (1 + (damagingAttribute / 100)),2);
             var expected = heroDamage;
 
             var actual = warrior.Damage();
@@ -318,7 +320,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             var armor = new Armor(name, requiredLevel, SlotType.Body, ArmorType.Mail, armorAttribute);
             warrior.Equip(armor);
             double damagingAttribute = 105;
-            var heroDamage = (int)(weaponDamage * (1 + (damagingAttribute / 100)));
+            var heroDamage = Math.Round(weaponDamage * (1 + (damagingAttribute / 100)),2);
             var expected = heroDamage;
 
             var actual = warrior.Damage();
@@ -333,10 +335,11 @@ namespace DotNet_Assignment_RPG_Heroes_Test
         {
             string name = "Jimmy";
             int level = 1;
-            int strength = 5;
+            double strength = 5;
             int dexterity = 2;
             int intelligence = 1;
-            int damage = 1;
+            int weaponDamage = 1;
+            var damage = Math.Round(weaponDamage * (1 + (strength / 100)), 2);
             string heroClass = "Warrior";
             var warrior = new Warrior(name);
             StringBuilder warriorStatus = new();
