@@ -15,9 +15,9 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         {
         }
         protected override string Class { get; } = "Rogue";
-        public override HeroAttribute LevelAttribute { get; set; } = new HeroAttribute (2, 6, 1 );
+        public override HeroAttribute LevelAttribute { get; set; } = new HeroAttribute(2, 6, 1);
         protected override List<WeaponType> ValidWeaponTypes { get; } = new List<WeaponType> { WeaponType.Dagger, WeaponType.Sword };
-        protected override List<ArmorType> ValidArmorTypes { get; } = new List<ArmorType> { ArmorType.Leather , ArmorType.Mail };
+        protected override List<ArmorType> ValidArmorTypes { get; } = new List<ArmorType> { ArmorType.Leather, ArmorType.Mail };
         protected override string DamageAttribute { get; } = "Dexterity";
 
 
@@ -30,7 +30,7 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             int dexterity = 4;
             int intelligence = 1;
 
-            HeroAttribute heroLevelUpAttribute = new HeroAttribute ( strength, dexterity, intelligence );
+            HeroAttribute heroLevelUpAttribute = new HeroAttribute(strength, dexterity, intelligence);
             LevelAttribute += heroLevelUpAttribute;
         }
     }

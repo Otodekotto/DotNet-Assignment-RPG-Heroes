@@ -317,7 +317,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             var armor = new Armor(name, requiredLevel, SlotType.Body, ArmorType.Cloth, armorAttribute);
             mage.Equip(armor);
             double damagingAttribute = 108;
-            var heroDamage = Math.Round(weaponDamage * (1 + (damagingAttribute / 100)),2);
+            var heroDamage = Math.Round(weaponDamage * (1 + (damagingAttribute / 100)), 2);
             var expected = heroDamage;
 
             var actual = mage.Damage();
@@ -353,7 +353,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
 
             Assert.Equal(expected, actual);
         }
-      
+
         #endregion
     }
 }

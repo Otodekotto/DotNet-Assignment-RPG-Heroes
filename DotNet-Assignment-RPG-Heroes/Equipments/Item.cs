@@ -14,12 +14,12 @@ namespace DotNet_Assignment_RPG_Heroes.Equipments
         public string? Name { get => name; set => name = value; }
         public int RequiredLevel { get => requiredLevel; set => requiredLevel = value; }
         public abstract SlotType Slot { get; }
-    
+
 
         public Item()
         {
         }
-        public Item(string name , int requiredLevel)
+        public Item(string name, int requiredLevel)
         {
             this.name = name;
             this.requiredLevel = requiredLevel;

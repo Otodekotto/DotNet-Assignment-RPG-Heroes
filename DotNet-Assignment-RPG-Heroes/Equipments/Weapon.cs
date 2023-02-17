@@ -13,7 +13,7 @@ namespace DotNet_Assignment_RPG_Heroes.Equipments
         public WeaponType WeaponType { get; private set; }
         public int WeaponDamage { get; private set; } = 1;
 
-        public Weapon(string name, int requiredLevel , WeaponType weaponType , int weaponDamage) 
+        public Weapon(string name, int requiredLevel, WeaponType weaponType, int weaponDamage)
         {
             this.name = name;
             this.requiredLevel = requiredLevel;

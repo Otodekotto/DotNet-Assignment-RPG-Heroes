@@ -292,7 +292,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             rogue.Equip(weapon);
             rogue.Equip(weaponTwo);
             double damagingAttribute = 6;
-            var heroDamage = Math.Round(weaponDamage * (1 + (damagingAttribute / 100)),2);
+            var heroDamage = Math.Round(weaponDamage * (1 + (damagingAttribute / 100)), 2);
             var expected = heroDamage;
 
             var actual = rogue.Damage();
@@ -317,7 +317,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             var armor = new Armor(name, requiredLevel, SlotType.Body, ArmorType.Mail, armorAttribute);
             rogue.Equip(armor);
             double damagingAttribute = 56;
-            var heroDamage = Math.Round(weaponDamage * (1 + (damagingAttribute / 100)),2);
+            var heroDamage = Math.Round(weaponDamage * (1 + (damagingAttribute / 100)), 2);
             var expected = heroDamage;
 
             var actual = rogue.Damage();

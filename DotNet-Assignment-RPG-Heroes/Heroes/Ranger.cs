@@ -14,10 +14,10 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         public Ranger(string name) : base(name)
         {
         }
-        protected override string Class { get;} = "Ranger";
-        public override HeroAttribute LevelAttribute { get; set; } = new HeroAttribute ( 1 , 7 , 1 );
-        protected override List<WeaponType> ValidWeaponTypes { get; } = new List<WeaponType> { WeaponType.Bow};
-        protected override List<ArmorType> ValidArmorTypes { get; } = new List<ArmorType> { ArmorType.Leather , ArmorType.Mail };
+        protected override string Class { get; } = "Ranger";
+        public override HeroAttribute LevelAttribute { get; set; } = new HeroAttribute(1, 7, 1);
+        protected override List<WeaponType> ValidWeaponTypes { get; } = new List<WeaponType> { WeaponType.Bow };
+        protected override List<ArmorType> ValidArmorTypes { get; } = new List<ArmorType> { ArmorType.Leather, ArmorType.Mail };
         protected override string DamageAttribute { get; } = "Dexterity";
 
 
@@ -27,7 +27,7 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             int strength = 1;
             int dexterity = 5;
             int intelligence = 1;
-            HeroAttribute heroLevelUpAttribute = new HeroAttribute ( strength, dexterity, intelligence);
+            HeroAttribute heroLevelUpAttribute = new HeroAttribute(strength, dexterity, intelligence);
             LevelAttribute += heroLevelUpAttribute;
         }
     }

@@ -19,7 +19,7 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
     {
         protected string name;
         public string Name { get => name; private set => name = value; }
-        protected abstract string Class { get;}
+        protected abstract string Class { get; }
         public int Level { get; set; } = 1;
         protected abstract string DamageAttribute { get; }
         public abstract HeroAttribute LevelAttribute { get; set; }
@@ -45,7 +45,7 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             else
                 throw new InvalidWeaponException();
         }
-    
+
         public void Equip(Armor armor)
         {
 
@@ -55,7 +55,7 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
                 throw new InvalidArmorException();
         }
 
-        public double Damage() 
+        public double Damage()
         {
             double damagingAttribute = GetDamagingAttribute();
             double heroDamage;
@@ -81,7 +81,7 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
                 return totalAttributes.Intelligence;
             else
                 return totalAttributes.Dexterity;
-            
+
 
         }
         public HeroAttribute TotalAttributes()
@@ -93,13 +93,13 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
                 if (item.Value as Armor != null)
                 {
                     var armor = (Armor)item.Value;
-                    if(armor.ArmorAttribute != null)
+                    if (armor.ArmorAttribute != null)
                         totalAttributes += armor.ArmorAttribute;
                 }
             }
             return totalAttributes;
         }
-        public string Display() 
+        public string Display()
         {
             HeroAttribute totalAttributes = TotalAttributes();
 

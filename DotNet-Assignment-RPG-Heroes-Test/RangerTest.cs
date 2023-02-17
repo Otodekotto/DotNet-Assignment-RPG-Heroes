@@ -254,7 +254,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             var ranger = new Ranger("Jakob");
             double weaponDamage = 1;
             double damagingAttribute = 7;
-            double heroDamage = Math.Round(weaponDamage * (1 + (damagingAttribute / 100)),2);
+            double heroDamage = Math.Round(weaponDamage * (1 + (damagingAttribute / 100)), 2);
             var expected = heroDamage;
 
             var actual = ranger.Damage();
@@ -271,7 +271,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             var weapon = new Weapon(name, requiredLevel, WeaponType.Bow, weaponDamage);
             ranger.Equip(weapon);
             double damagingAttribute = 7;
-            var heroDamage = Math.Round((weaponDamage * (1 + (damagingAttribute / 100))),2);
+            var heroDamage = Math.Round((weaponDamage * (1 + (damagingAttribute / 100))), 2);
             var expected = heroDamage;
 
 
@@ -320,7 +320,7 @@ namespace DotNet_Assignment_RPG_Heroes_Test
             ranger.Equip(armor);
             double damagingAttribute = 57;
             var heroDamage = (weaponDamage * (1 + (damagingAttribute / 100)));
-            double expected = Math.Round(heroDamage,2);
+            double expected = Math.Round(heroDamage, 2);
 
             var actual = ranger.Damage();
 

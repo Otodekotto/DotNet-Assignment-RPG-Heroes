@@ -10,10 +10,9 @@ namespace DotNet_Assignment_RPG_Heroes.Equipments
 {
     public class Armor : Item
     {
-
         public override SlotType Slot { get; } = SlotType.Body;
         public ArmorType ArmorType { get; set; }
-        public HeroAttribute? ArmorAttribute { get;  private set;} = new HeroAttribute ( 0, 0, 0 );
+        public HeroAttribute? ArmorAttribute { get; private set; } = new HeroAttribute(0, 0, 0);
 
         public Armor(string name, int requiredLevel, SlotType slotType, ArmorType armorType, HeroAttribute armorAttribute)
         {

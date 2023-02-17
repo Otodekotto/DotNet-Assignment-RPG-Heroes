@@ -16,8 +16,8 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
         {
         }
         protected override string Class { get; } = "Warrior";
-        public override HeroAttribute LevelAttribute { get; set; } = new HeroAttribute ( 5 ,  2 ,  1);
-        protected override List<WeaponType> ValidWeaponTypes { get;} = new List<WeaponType> { WeaponType.Axe, WeaponType.Hammer, WeaponType.Sword};
+        public override HeroAttribute LevelAttribute { get; set; } = new HeroAttribute(5, 2, 1);
+        protected override List<WeaponType> ValidWeaponTypes { get; } = new List<WeaponType> { WeaponType.Axe, WeaponType.Hammer, WeaponType.Sword };
         protected override List<ArmorType> ValidArmorTypes { get; } = new List<ArmorType> { ArmorType.Mail, ArmorType.Plate };
 
         protected override string DamageAttribute { get; } = "Strength";
@@ -29,8 +29,8 @@ namespace DotNet_Assignment_RPG_Heroes.Heroes
             int strength = 3;
             int dexterity = 2;
             int intelligence = 1;
-            HeroAttribute heroLevelUpAttribute = new HeroAttribute ( strength, dexterity , intelligence );
-            LevelAttribute += heroLevelUpAttribute; 
+            HeroAttribute heroLevelUpAttribute = new HeroAttribute(strength, dexterity, intelligence);
+            LevelAttribute += heroLevelUpAttribute;
         }
     }
 }
